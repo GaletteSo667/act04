@@ -1,6 +1,6 @@
 #include <wiringPiI2C.h>
 #include <iostream>
-#include <unistd.h>
+#include <unistd.h>  // Pour la fonction sleep()
 
 class TemperatureSensor {
 private:
@@ -38,10 +38,16 @@ public:
 };
 
 int main() {
-    // Créer une instance du capteur et lire la température
+    // Créer une instance du capteur
     TemperatureSensor sensor;
-    float temperature = sensor.readTemperature();
 
-    std::cout << "Température actuelle : " << temperature << "°C" << std::endl;
+    // Boucle infinie pour lire la température toutes les 2 secondes
+    while (true) {
+        float temperature = sensor.readTemperature();
+        std::cout << "Température actuelle : " << temperature << "°C" << std::endl;
+
+        sleep(2);  // Attendre 2 secondes avant de lire à nouveau
+    }
+
     return 0;
 }
