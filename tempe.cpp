@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * \file   tempe.cpp
+ * \brief  sensor temperature
+ * 
+ * \author GaletteSo667
+ * \date   September 2024
+ *********************************************************************/
+
 #include <wiringPiI2C.h>
 #include <iostream>
 #include <unistd.h>  // Pour la fonction sleep()
@@ -41,7 +49,7 @@ int main() {
     // Créer une instance du capteur
     TemperatureSensor sensor;
 
-    // Boucle infinie pour lire la température toutes les 2 secondes
+    // Boucle infinie 2sec
     while (true) {
         float temperature = sensor.readTemperature();
         std::cout << "Température actuelle : " << temperature << "°C" << std::endl;
